@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Image, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './LoginScreen';
@@ -11,7 +11,7 @@ const App = () => {
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen 
-          name="   " 
+          name="Login" // Nome do route
           component={LoginScreen}
           options={({ navigation }) => ({
             headerStyle: {
@@ -19,14 +19,18 @@ const App = () => {
               borderBottomWidth: 5,
               borderBottomColor: 'yellow',
             },
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => console.log('Ícone pressionado!')}>
-                <Image
-                  source={require('../assets/diretoria2.jpg')}
-                  style={styles.icon}
-                />
-              </TouchableOpacity>
+            headerTitle: () => (
+              <View style={styles.headerTitleContainer}>
+                <TouchableOpacity onPress={() => console.log('Ícone pressionado!')}>
+                  <Image
+                    source={require('../assets/diretoria2.jpg')}
+                    style={styles.icon}
+                  />
+                </TouchableOpacity>
+              </View>
             ),
+            headerLeft: () => null, // Remover o ícone do lado esquerdo
+            headerRight: () => null, // Remover ícones do lado direito, se necessário
           })}
         />
         {/* Adicione outras telas aqui, se necessário */}
@@ -36,15 +40,18 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  headerTitleContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   icon: {
     width: 60, // Ajuste o tamanho do ícone conforme necessário
     height: 60, // Ajuste o tamanho do ícone conforme necessário
-    marginRight: 15, // Ajuste o espaçamento conforme necessário
     borderWidth: 2, // Largura da borda
     borderColor: 'black', // Cor da borda
     borderRadius: 15, // Bordas arredondadas
   },
-  
 });
 
 export default App;
