@@ -1,15 +1,16 @@
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text,Image, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 const LoginScreen = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
   return (
+    
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao Meu App</Text>
-
+      <Text style={styles.title}>Bem-vindo à Diretoria</Text>
+      
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -43,10 +44,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
+    
+    backgroundColor: '#8F7108', // Cor de fundo roxa
+    
   },
   title: {
     fontSize: 24,
     marginBottom: 24,
+    color:'white',
   },
   inputContainer: {
     width: '100%',
@@ -57,9 +62,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 12,
+    color:'white',
   },
   loginButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: 'green',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,
